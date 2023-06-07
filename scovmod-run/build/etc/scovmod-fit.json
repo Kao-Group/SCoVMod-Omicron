@@ -1,0 +1,14 @@
+{
+  "comment": "This file is read by the ABC fit routine",
+  "start-from-comment": "PRIOR or a path to a Population in json format",
+  "start-from": "PRIOR",
+  "fitting-data": {
+    "observed-stats-by-councilarea": "dataIn/SUMMARYSTAT/observations.csv",
+    "observed-stats-by-councilarea_local": "/home/ubuntu/_CODE/scovmod-model/data/SUMMARYSTAT/observations.csv"
+  },
+  "scovmod-model-config": "etc/scovmod.json",
+  "scovmod-model-config_local": "/home/ubuntu/_CODE/scovmod-run/build/etc/scovmod.json",
+  "output-dir": "/output",
+  "output-dir_local": "/home/ubuntu/testABCSCovMod"
+}
+

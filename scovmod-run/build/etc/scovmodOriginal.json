@@ -1,0 +1,69 @@
+{
+	"parameters": {
+		"rates": {
+			"sToE_Mild_YoungRate_Day": 0.55,
+			"sToE_Mild_AdultRate_Day": 0.55,
+			"sToE_Mild_ElderlyRate_Day": 0.55,
+			"sToE_Mild_YoungRate_Night": 0.55,
+			"sToE_Mild_AdultRate_Night": 0.55,
+			"sToE_Mild_ElderlyRate_Night": 0.55,
+			"sToE_Severe_YoungRate_Day": 1.0,
+			"sToE_Severe_AdultRate_Day": 1.0,
+			"sToE_Severe_ElderlyRate_Day": 1.0,
+			"sToE_Severe_YoungRate_Night": 1.0,
+			"sToE_Severe_AdultRate_Night": 1.0,
+			"sToE_Severe_ElderlyRate_Night": 1.0,
+			"eToMI_YoungRate": 0.4,
+			"eToMI_AdultRate": 0.4,
+			"eToMI_ElderlyRate": 0.4,
+			"eToR_YoungRate": 0.0,
+			"eToR_AdultRate": 0.0,
+			"eToR_ElderlyRate": 0.0,
+			"miToR_YoungRate": 0.286,
+			"miToR_AdultRate": 0.286,
+			"miToR_ElderlyRate": 0.286,
+			"miToSI_YoungRate": 0.2,
+			"miToSI_AdultRate": 0.333,
+			"miToSI_ElderlyRate": 0.333,
+			"siToR_YoungRate": 0.06,
+			"siToR_AdultRate": 0.06,
+			"siToR_ElderlyRate": 0.06,
+			"siToH_YoungRate": 0.323,
+			"siToH_AdultRate": 0.323,
+			"siToH_ElderlyRate": 0.323,
+			"siToD_YoungRate": 0.078,
+			"siToD_AdultRate": 0.078,
+			"siToD_ElderlyRate": 0.078,
+			"hToR_YoungRate": 0.076,
+			"hToR_AdultRate": 0.076,
+			"hToR_ElderlyRate": 0.076,
+			"hToD_YoungRate": 0.125,
+			"hToD_AdultRate": 0.125,
+			"hToD_ElderlyRate": 0.125},
+		"testing": {
+			"covid": {
+				"infectiousSensitivity": 0.786092602305,
+				"specificity": 1.0
+			}
+		}
+	},
+	"data": {
+		"dir": "/home/thomdoherty/_CODE/SCoVMod-model/data/",
+		"movement": {
+			"dir": "JSON_MOVEMENTS/JSON"
+		},
+		"seeding": {
+			"dir": "SEEDING",
+			"people-start-locations": "population.csv",
+			"infectedSeeds": "infectedSeeds.csv"
+		}
+	},
+	"configParameters": {
+		"time": {
+			"start-timestep": 36646,
+			"end-timestep-inclusive": 36701,
+			"tau-leap-step": 0.5,
+			"chunkSize": 20
+		}
+	}
+}

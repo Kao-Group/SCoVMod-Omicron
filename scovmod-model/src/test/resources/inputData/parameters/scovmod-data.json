@@ -1,0 +1,40 @@
+{
+  "data": {
+    "dir": "/mnt/TBFT5168",
+    "movement": {
+      "dir": "JSON_MOVEMENTS"
+    },
+    "seeding": {
+      "dir": "SEEDING",
+      "people-start-locations": "startlocations.csv",
+      "area-to-reseed": "areasToReseed.csv",
+      "spatial-seeding-weights-file": "spatialSeedingGroupAttributes.csv",
+      "recovered-seeding-weights-file": "recoveredSeedingGroupAttributes.csv",
+      "area-to-seed-with-variant": "variantSeedsPerCA.csv"
+    },
+    "summarystat": {
+      "dir": "SUMMARYSTAT",
+      "area-hb-lookup": "OA_info_for_movement_model.csv"
+    },
+    "transmissionMod": {
+      "dir": "ACCESS",
+      "transModIndex": "transModIndex.csv"
+    },
+    "lockdown": {
+      "dir": "LOCKDOWN",
+      "specifiedLockdowns": "specifiedLockdowns.csv"
+    },
+    "cases": {
+      "dir": "CASES",
+      "casesMultiplierPerCA": "caseMultiplierPerCA.csv"
+    },
+    "vaccination": {
+      "dir": "VACCINATION",
+      "peopleToVaccinatePerTimestepFileName": "peopleToVaccinate.json"
+    },
+    "wastewater": {
+      "dir": "WASTEWATER",
+      "dzToWWSiteMappingFileName": "dz_ssa_summary.csv"
+    }
+  }
+}

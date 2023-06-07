@@ -1,0 +1,342 @@
+{
+	"parameters": {
+		"numSeeds": 10000.0,
+		"numRecoveredSeeds": 200000.0,
+		"rates": {
+			"sToE_Mild_YoungRate_Day": 0.55,
+			"sToE_Mild_AdultRate_Day": 0.55,
+			"sToE_Mild_ElderlyRate_Day": 0.55,
+			"sToE_Mild_YoungRate_Night": 0.55,
+			"sToE_Mild_AdultRate_Night": 0.55,
+			"sToE_Mild_ElderlyRate_Night": 0.55,
+			"sToE_Severe_YoungRate_Day": 1.0,
+			"sToE_Severe_AdultRate_Day": 1.0,
+			"sToE_Severe_ElderlyRate_Day": 1.0,
+			"sToE_Severe_YoungRate_Night": 1.0,
+			"sToE_Severe_AdultRate_Night": 1.0,
+			"sToE_Severe_ElderlyRate_Night": 1.0,
+			"firstBetaFactor": 1.0,
+			"secondBetaFactor": 0.7,
+			"betaFactorForLocalLockdown": 0.2,
+			"eToMI_YoungRate": 0.333,
+			"eToMI_AdultRate": 0.333,
+			"eToMI_ElderlyRate": 0.333,
+			"eToR_YoungRate": 0.0,
+			"eToR_AdultRate": 0.0,
+			"eToR_ElderlyRate": 0.0,
+			"eToT_YoungRate": 0.0,
+			"eToT_AdultRate": 0.0,
+			"eToT_ElderlyRate": 0.0,
+			"miToR_YoungRate": 0.235,
+			"miToR_AdultRate": 0.235,
+			"miToR_ElderlyRate": 0.235,
+			"miToSI_YoungRate": 0.196,
+			"miToSI_AdultRate": 0.286,
+			"miToSI_ElderlyRate": 0.286,
+			"miToT_YoungRate": 0.0,
+			"miToT_AdultRate": 0.0,
+			"miToT_ElderlyRate": 0.0,
+			"siToR_YoungRate": 0.053,
+			"siToR_AdultRate": 0.048,
+			"siToR_ElderlyRate": 0.046,
+			"siToH_YoungRate": 0.25,
+			"siToH_AdultRate": 0.25,
+			"siToH_ElderlyRate": 0.25,
+			"siToD_YoungRate": 0.063,
+			"siToD_AdultRate": 0.063,
+			"siToD_ElderlyRate": 0.063,
+			"siToT_YoungRate": 0.0,
+			"siToT_AdultRate": 0.0,
+			"siToT_ElderlyRate": 0.0,
+			"hToR_YoungRate": 0.081,
+			"hToR_AdultRate": 0.081,
+			"hToR_ElderlyRate": 0.081,
+			"hToD_YoungRate": 0.103,
+			"hToD_AdultRate": 0.103,
+			"hToD_ElderlyRate": 0.103,
+			"tToR_YoungRate": 0.0,
+			"tToR_AdultRate": 0.0,
+			"tToR_ElderlyRate": 0.0,
+			"tToH_YoungRate": 0.0,
+			"tToH_AdultRate": 0.0,
+			"tToH_ElderlyRate": 0.0,
+			"tToD_YoungRate": 0.0,
+			"tToD_AdultRate": 0.0,
+			"tToD_ElderlyRate": 0.0,
+			"rToS_YoungRate": 0.001444,
+			"rToS_AdultRate": 0.001444,
+			"rToS_ElderlyRate": 0.001444
+		},
+		"testing": {
+			"covid": {
+				"infectiousSensitivity": 0.786092602305,
+				"specificity": 1.0
+			}
+		},
+		"transmissionMod": {
+			"transmissionModIndex": {
+				"transModifier": 0.12,
+				"averageTransmissionModIndexPerCouncilArea": 20.92
+			}
+		},
+		"vaccination": {
+			"protectionlevel": {
+				"partialVersusFullProtectionProp": 1.0,
+				"partialVersusFullProtectionProp_variant": 1.0
+			}
+		}
+	},
+	"data": {
+		"dir": "/home/ubuntu/_CODE/scovmod-model/data/",
+		"movement": {
+			"dir": "JSON_MOVEMENTS/JSON"
+		},
+		"seeding": {
+			"dir": "SEEDING",
+			"people-start-locations": "population.csv",
+			"area-to-reseed": "areasToReseed.csv",
+			"spatial-seeding-weights-file": "spatialSeedingGroupAttributes.csv",
+			"recovered-seeding-weights-file":  "recoveredSpatialSeedingGroupAttributes.csv",
+			"area-to-seed-with-variant": "variantSeedsPerCA.csv"
+		},
+		"summarystat": {
+			"dir": "SUMMARYSTAT",
+			"area-hb-lookup": "OA_info_for_movement_model.csv"
+		},
+		"transmissionMod": {
+			"dir": "ACCESS",
+			"transModIndex": "transModIndex.csv"
+		},
+		"lockdown": {
+			"dir": "LOCKDOWN",
+			"specifiedLockdowns": "specifiedLockdowns.csv"
+		},
+		"cases": {
+			"dir": "CASES",
+			"casesMultiplierPerCA": "caseMultiplierPerCA.csv"
+		},
+		"vaccination": {
+			"dir": "VACCINATION",
+			"peopleToVaccinatePerTimestepFileName": "peopleToVaccinate.json"
+		},
+		"wastewater": {
+			"dir": "WASTEWATER",
+			"dzToWWSiteMappingFileName": "dz_ssa_summary_20210216.csv"
+		}
+	},
+	"configParameters": {
+		"time": {
+			"start-timestep": 37916,
+			"end-timestep-inclusive": 37988,
+			"first-beta-factor-timestep": 39000,
+			"second-beta-factor-timestep": 39000,
+			"tau-leap-step": 0.5,
+			"chunkSize": 20,
+			"outputFrequency": "weekly"
+		},
+		"feature": {
+			"reseeding": {
+				"comment": "Used for reseeding of model - make sure reseeding area level matches area set in input file",
+				"reseeding-area-level": "IZ"
+			},
+			"wastewater": {
+				"comment": "Used for multiplication factors for converting from infections to RNA signal",
+				"mild-infectious-multiplier": 0.8,
+				"severe-infectious-multiplier": 0.8,
+				"hospitalised-multiplier": 0.8
+			},
+			"localLockdown": {
+				"comment": "Used for local lockdowns configuration - see above for beta rate during lockdown",
+				"local-lockdowns-activated": "false",
+				"local-lockdowns-start-timestep": 36940,
+				"local-lockdown-area-level": "CA",
+				"mild-infectious-upper-threshold": 0.002,
+				"mild-infectious-lower-threshold": 0.001,
+				"contact-tracing-rate-multiplier": 1.0
+			},
+			"vaccination": {
+				"time" : {
+					"startingTimeStep": 37200
+				},
+				"efficacy": {
+					"comment": "Note that 0 is full protection and 1.0 is no protection wrt vaccination",
+					"young": {
+						"standard": {
+							"standardStrainEfficacyFirstEfficacyChange_young": "0.2,0.5,0.8",
+							"numberOfTimestepsInFirstEfficacyPhaseStandardStrain_young": "60,60,60",
+							"standardStrainEfficacySecondEfficacyChange_young": "0.2,0.5,0.8",
+							"numberOfTimestepsInSecondEfficacyPhaseStandardStrain_young": "60,60,60",
+							"standardStrainEfficacyThirdEfficacyChange_young": "0.2,0.5,0.8",
+							"numberOfTimestepsInThirdEfficacyPhaseStandardStrain_young": "60,60,60"
+						},
+						"variant": {
+							"variantStrainEfficacyFirstEfficacyChange_young": "0.2,0.5,0.8",
+							"numberOfTimestepsInFirstEfficacyPhaseVariantStrain_young": "60,60,60",
+							"variantStrainEfficacySecondEfficacyChange_young": "0.2,0.5,0.8",
+							"numberOfTimestepsInSecondEfficacyPhaseVariantStrain_young": "60,60,60",
+							"variantStrainEfficacyThirdEfficacyChange_young": "0.2,0.5,0.8",
+							"numberOfTimestepsInThirdEfficacyPhaseVariantStrain_young": "60,60,60"
+						}
+					},
+					"adult": {
+						"standard": {
+							"standardStrainEfficacyFirstEfficacyChange_adult": "0.2,0.5,0.8",
+							"numberOfTimestepsInFirstEfficacyPhaseStandardStrain_adult": "30,30,30",
+							"standardStrainEfficacySecondEfficacyChange_adult": "0.2,0.5,0.8",
+							"numberOfTimestepsInSecondEfficacyPhaseStandardStrain_adult": "30,30,30",
+							"standardStrainEfficacyThirdEfficacyChange_adult": "0.2,0.5,0.8",
+							"numberOfTimestepsInThirdEfficacyPhaseStandardStrain_adult": "30,30,30"
+						},
+						"variant": {
+							"variantStrainEfficacyFirstEfficacyChange_adult": "0.2,0.5,0.8",
+							"numberOfTimestepsInFirstEfficacyPhaseVariantStrain_adult": "60,60,60",
+							"variantStrainEfficacySecondEfficacyChange_adult": "0.2,0.5,0.8",
+							"numberOfTimestepsInSecondEfficacyPhaseVariantStrain_adult": "60,60,60",
+							"variantStrainEfficacyThirdEfficacyChange_adult": "0.2,0.5,0.8",
+							"numberOfTimestepsInThirdEfficacyPhaseVariantStrain_adult": "60,60,60"
+						}
+					},
+					"elderly": {
+						"standard": {
+							"standardStrainEfficacyFirstEfficacyChange_elderly": "0.2,0.5,0.8",
+							"numberOfTimestepsInFirstEfficacyPhaseStandardStrain_elderly": "60,60,60",
+							"standardStrainEfficacySecondEfficacyChange_elderly": "0.2,0.5,0.8",
+							"numberOfTimestepsInSecondEfficacyPhaseStandardStrain_elderly": "60,60,60",
+							"standardStrainEfficacyThirdEfficacyChange_elderly": "0.2,0.5,0.8",
+							"numberOfTimestepsInThirdEfficacyPhaseStandardStrain_elderly":"60,60,60"
+						},
+						"variant": {
+							"variantStrainEfficacyFirstEfficacyChange_elderly": "0.2,0.5,0.8",
+							"numberOfTimestepsInFirstEfficacyPhaseVariantStrain_elderly": "60,60,60",
+							"variantStrainEfficacySecondEfficacyChange_elderly": "0.2,0.5,0.8",
+							"numberOfTimestepsInSecondEfficacyPhaseVariantStrain_elderly": "60,60,60",
+							"variantStrainEfficacyThirdEfficacyChange_elderly": "0.2,0.5,0.8",
+							"numberOfTimestepsInThirdEfficacyPhaseVariantStrain_elderly": "60,60,60"
+						}
+					},
+					"afterImmunityLoss": {
+						"young": {
+							"standard": {
+								"standardStrainEfficacyFirstEfficacyChange_young": 0.1,
+								"numberOfTimestepsInFirstEfficacyPhaseStandardStrain_young": 380,
+								"standardStrainEfficacySecondEfficacyChange_young": 0.2,
+								"numberOfTimestepsInSecondEfficacyPhaseStandardStrain_young": 380,
+								"standardStrainEfficacyThirdEfficacyChange_young": 0.3,
+								"numberOfTimestepsInThirdEfficacyPhaseStandardStrain_young": 380
+							},
+							"variant": {
+								"variantStrainEfficacyFirstEfficacyChange_young": 0.5,
+								"numberOfTimestepsInFirstEfficacyPhaseVariantStrain_young": 365,
+								"variantStrainEfficacySecondEfficacyChange_young": 0.55,
+								"numberOfTimestepsInSecondEfficacyPhaseVariantStrain_young": 370,
+								"variantStrainEfficacyThirdEfficacyChange_young": 0.45,
+								"numberOfTimestepsInThirdEfficacyPhaseVariantStrain_young": 375
+							}
+						},
+						"adult": {
+							"standard": {
+								"standardStrainEfficacyFirstEfficacyChange_adult": 0.3,
+								"numberOfTimestepsInFirstEfficacyPhaseStandardStrain_adult": 380,
+								"standardStrainEfficacySecondEfficacyChange_adult": 0.2,
+								"numberOfTimestepsInSecondEfficacyPhaseStandardStrain_adult": 380,
+								"standardStrainEfficacyThirdEfficacyChange_adult": 0.3,
+								"numberOfTimestepsInThirdEfficacyPhaseStandardStrain_adult": 380
+							},
+							"variant": {
+								"variantStrainEfficacyFirstEfficacyChange_adult": 0.5,
+								"numberOfTimestepsInFirstEfficacyPhaseVariantStrain_adult": 365,
+								"variantStrainEfficacySecondEfficacyChange_adult": 0.55,
+								"numberOfTimestepsInSecondEfficacyPhaseVariantStrain_adult": 370,
+								"variantStrainEfficacyThirdEfficacyChange_adult": 0.45,
+								"numberOfTimestepsInThirdEfficacyPhaseVariantStrain_adult": 375
+							}
+						},
+						"elderly": {
+							"standard": {
+								"standardStrainEfficacyFirstEfficacyChange_elderly": 0.1,
+								"numberOfTimestepsInFirstEfficacyPhaseStandardStrain_elderly": 380,
+								"standardStrainEfficacySecondEfficacyChange_elderly": 0.2,
+								"numberOfTimestepsInSecondEfficacyPhaseStandardStrain_elderly": 380,
+								"standardStrainEfficacyThirdEfficacyChange_elderly": 0.3,
+								"numberOfTimestepsInThirdEfficacyPhaseStandardStrain_elderly": 380
+							},
+							"variant": {
+								"variantStrainEfficacyFirstEfficacyChange_elderly": 0.5,
+								"numberOfTimestepsInFirstEfficacyPhaseVariantStrain_elderly": 365,
+								"variantStrainEfficacySecondEfficacyChange_elderly": 0.55,
+								"numberOfTimestepsInSecondEfficacyPhaseVariantStrain_elderly": 370,
+								"variantStrainEfficacyThirdEfficacyChange_elderly": 0.45,
+								"numberOfTimestepsInThirdEfficacyPhaseVariantStrain_elderly": 375
+							}
+						}
+					}
+				}
+			},
+			"covidVariant": {
+				"comment": "Used for covid variant scenarios",
+				"rates": {
+					"sToE_Mild_YoungRate_Day": 0.55,
+					"sToE_Mild_AdultRate_Day": 0.55,
+					"sToE_Mild_ElderlyRate_Day": 0.55,
+					"sToE_Mild_YoungRate_Night": 0.55,
+					"sToE_Mild_AdultRate_Night": 0.55,
+					"sToE_Mild_ElderlyRate_Night": 0.55,
+					"sToE_Severe_YoungRate_Day": 1.0,
+					"sToE_Severe_AdultRate_Day": 1.0,
+					"sToE_Severe_ElderlyRate_Day": 1.0,
+					"sToE_Severe_YoungRate_Night": 1.0,
+					"sToE_Severe_AdultRate_Night": 1.0,
+					"sToE_Severe_ElderlyRate_Night": 1.0,
+					"eToMI_YoungRate": 0.333,
+					"eToMI_AdultRate": 0.333,
+					"eToMI_ElderlyRate": 0.333,
+					"eToR_YoungRate": 0.0,
+					"eToR_AdultRate": 0.0,
+					"eToR_ElderlyRate": 0.0,
+					"eToT_YoungRate": 0.0,
+					"eToT_AdultRate": 0.0,
+					"eToT_ElderlyRate": 0.0,
+					"miToR_YoungRate": 0.235,
+					"miToR_AdultRate": 0.235,
+					"miToR_ElderlyRate": 0.235,
+					"miToSI_YoungRate": 0.196,
+					"miToSI_AdultRate": 0.286,
+					"miToSI_ElderlyRate": 0.286,
+					"miToT_YoungRate": 0.0,
+					"miToT_AdultRate": 0.0,
+					"miToT_ElderlyRate": 0.0,
+					"siToR_YoungRate": 0.053,
+					"siToR_AdultRate": 0.048,
+					"siToR_ElderlyRate": 0.046,
+					"siToH_YoungRate": 0.25,
+					"siToH_AdultRate": 0.25,
+					"siToH_ElderlyRate": 0.25,
+					"siToD_YoungRate": 0.063,
+					"siToD_AdultRate": 0.063,
+					"siToD_ElderlyRate": 0.063,
+					"siToT_YoungRate": 0.0,
+					"siToT_AdultRate": 0.0,
+					"siToT_ElderlyRate": 0.0,
+					"hToR_YoungRate": 0.081,
+					"hToR_AdultRate": 0.081,
+					"hToR_ElderlyRate": 0.081,
+					"hToD_YoungRate": 0.103,
+					"hToD_AdultRate": 0.103,
+					"hToD_ElderlyRate": 0.103,
+					"tToR_YoungRate": 0.0,
+					"tToR_AdultRate": 0.0,
+					"tToR_ElderlyRate": 0.0,
+					"tToH_YoungRate": 0.0,
+					"tToH_AdultRate": 0.0,
+					"tToH_ElderlyRate": 0.0,
+					"tToD_YoungRate": 0.0,
+					"tToD_AdultRate": 0.0,
+					"tToD_ElderlyRate": 0.0,
+					"rToS_YoungRate": 0.0,
+					"rToS_AdultRate": 0.0,
+					"rToS_ElderlyRate": 0.0
+				}
+			}
+		}
+	}
+}

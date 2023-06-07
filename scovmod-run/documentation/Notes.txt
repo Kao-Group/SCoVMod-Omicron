@@ -1,0 +1,85 @@
+docker run \
+    --rm \
+    -it \
+    -v $(pwd)/testNewBuildv0063/:/output \
+     -e JAVA_OPTS='-Xmx10500m -Xms8000m' \
+    scovmod:0.0.240 \
+    runEnsemble.sh -d /output/Gen034.json -t FitAssessment -c /output/scovmod.json -p 1 -r 2
+
+    docker run \
+        --rm \
+        -it \
+        -v $(pwd)/fitAssessment018_Feb15th_125_OA/:/output \
+         -e JAVA_OPTS='-Xmx55g -Xms40g' \
+        scovmod:0.0.204 \
+        runEnsemble.sh -d /output/Gen018.json -t FitAssessmentOALevelRCalc -p 5 -r 125
+
+            docker run \
+                --rm \
+                -it \
+                -v $(pwd)/fitAssessment018/:/output \
+                -v $(pwd)/fitAssessment018/specifiedLockdowns.csv:/app/dataIn/LOCKDOWN/specifiedLockdowns.csv \
+                 -e JAVA_OPTS='-Xmx8g -Xms6g' \
+                scovmod:0.0.240 \
+                runEnsemble.sh -d /output/Gen018.json -t FitAssessment -p 1 -r 1
+
+    docker run \
+        -dt \
+        --network="host" \
+        -e CLUSTER_NAME=scovmodfit \
+        -e JAVA_OPTS='-Xmx13500m -Xms12000m' \
+        -e SEED1=192.168.24.10 \
+        -e SEED2=192.168.24.20 \
+        -v /home/ubuntu/scovmodFittingOutput/:/output \
+        scovmod:0.0.171 \
+        runFitting.sh
+
+        EDI ACCOUNT
+
+
+    docker run \
+        -dt \
+        --network="host" \
+        -e CLUSTER_NAME=scovmodfit \
+        -e JAVA_OPTS='-Xmx13500m -Xms12000m' \
+        -e SEED1=10.2.5.20 \
+        -e SEED2=10.2.5.40 \
+        -v /home/ubuntu/scovmodFittingOutput/:/output \
+        scovmod:0.0.199 \
+        runFitting.sh
+
+#!/bin/bash
+mkdir -p /home/ubuntu/.ssh
+cat > /home/ubuntu/.ssh/authorized_keys <<- EOF
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDSWqUfe9UVCc34Bs/3o2ui6wkCzb8DpLfAc/3QcL4NR64MFEao9K8qMPcYQXSaBnLDxs+R0iwUkdDUvwa9hLoVF6zOszBuy9sOXZkcFpce49RdUUqrgsm682TdXNwBAiWQgAJlfrTJ1MABpfrRTXKnUH0n55+ZFnKRJYGnT7ht1YOQbJHskuvw117vlFFeGmgrI0t7UBTR10QtpO0o63aIy7WApsEnJ+IclNIB/IbsNfwSk1+PpWnCUG7iUHarNpEKYyUdNQnLeejGuyu1hzxlJkcvuGFINB7fjE0DyhbsJBO2V0X2///s773PXfNLRbMcXbUIZ7QzOcolnw24iL70lwgfYtejPds6hakJk2iKvTR4bylAjDvkzlHhn5ONKpHiT23rn2vWki1DxZir2BL80HeRWLFLs3bwbP3NRW0l1uaJcSEGbk8Wa3nxxPuvJ+7u3eRSDGfgp2m4/Aa73/j2Ff8n1PWd740bygAbazdqvd/+91eKSrks2fgufsm09GpMr17R1odXXjWkbfawH2Ve+MrK3DdLGt9aQ1sqZQe04k7iCcYZWMhvgOKNB/Io4jxTagmDll4jCDPAYUGSA2HQiFq1OqN7Q951XhvPOj5OQfH6+01nDzjWvGDA0PUvx0A745rKtl66st1mURh0bsEryW8nJhlpmcxFade0SpCMwQ== TD-MAC009
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDLLq8D/XRjR63RGwr0BOakWh3i0FLNGfAJJbYP0VBrAqqFEucTR6BCy76N8utrzS9fPDj0zXwYSOA0euyWpkN1QqLUSDcvxkcRDfDV0LIspske8KCMirCwJJpsNZBzOyhLam0AERUe3iY89iNMZSXTV+583rqClfVkOUTbB6wT7nu2brTM4kOOZi3PjIdgykpMrOEJDRv5MvJbA85W/1H65cnM+DJkejBlpMDYaw1064LHvdSaYWbMCrS6h8NGY45ZbxoT+NiS8AtmclAzzKAySmOsVaB43Al5rH8yxvs0ukf/xyIZc3u2UVM2ymhPM5qVRhK5xVEwbG0vNHVXoHT92QJIrhlDgTLGHQ4fRLmYKbMtdrrIZOXeIXo0RNJpwwlcjc9bXKxQeL85+iXy49JSg1D7SQMnUT3GV+YY3FGdLqCaBbK4P78EUY9riz6S+ti1lUjwyoAbTlVr1+cMdXeL7Tbqyfj3aCvPKdxJoqIqKIWfDz+HPyFTQgKb5W6hl7l1tV5kwquTa8lffG/H33c78f2zUwYKNxED4W53HvBvs/j1AKtQfqRdh3Tr48xIaPNhdqMEmn70SaFfQR4R0o2Eg1WgSuoNcKiBbKEKME0Nh5y3Jub/s8NX+sRNDUmcQh/osc0s9MOlTz4QNt0E8Ruy1mju7uyM2qP1rYIXwBLaWQ== olivertearne@MAC001
+EOF
+    docker run \
+        -dt \
+        --network="host" \
+        -e CLUSTER_NAME=scovmodfit \
+        -e JAVA_OPTS='-Xmx13500m -Xms12000m' \
+        -e SEED1=192.168.24.10 \
+        -e SEED2=192.168.24.20 \
+        -v /home/ubuntu/scovmodFittingOutput/:/output \
+        scovmod:0.0.171 \
+        runFitting.sh
+
+EDI Account
+
+#!/bin/bash
+mkdir -p /home/ubuntu/.ssh
+cat > /home/ubuntu/.ssh/authorized_keys <<- EOF
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDG2txEbdsHEtjRKCKTsSEPHS3ocZleCAToBOYOCw/3QkAAhQBYttUleiw+PgYPZUjICwK1/gWB+N/ze8H9xk677V6anACr1tVyoP608bA2xwawlweXXeiurvwP9hxgV5gck2txv687jPBe9U+GbzIuSo8LEa1F9MUykrMZH86VoMXg10WDjQhMUr0Cmc65Xeo59+i07Y4Aa4fkMKH983fMEmfY3G6VsimnWm/8KLn6rW1bQ2WwstDsO4SPA/EFEImVr16JoBIF/lQxJIiG/uW09K26ms08O5DzIrWX7L2fEVVahJ+r6b6rRaIb3D6PvuVA8tH+JrzG46pXMEOERSM9 TD_key_pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDLLq8D/XRjR63RGwr0BOakWh3i0FLNGfAJJbYP0VBrAqqFEucTR6BCy76N8utrzS9fPDj0zXwYSOA0euyWpkN1QqLUSDcvxkcRDfDV0LIspske8KCMirCwJJpsNZBzOyhLam0AERUe3iY89iNMZSXTV+583rqClfVkOUTbB6wT7nu2brTM4kOOZi3PjIdgykpMrOEJDRv5MvJbA85W/1H65cnM+DJkejBlpMDYaw1064LHvdSaYWbMCrS6h8NGY45ZbxoT+NiS8AtmclAzzKAySmOsVaB43Al5rH8yxvs0ukf/xyIZc3u2UVM2ymhPM5qVRhK5xVEwbG0vNHVXoHT92QJIrhlDgTLGHQ4fRLmYKbMtdrrIZOXeIXo0RNJpwwlcjc9bXKxQeL85+iXy49JSg1D7SQMnUT3GV+YY3FGdLqCaBbK4P78EUY9riz6S+ti1lUjwyoAbTlVr1+cMdXeL7Tbqyfj3aCvPKdxJoqIqKIWfDz+HPyFTQgKb5W6hl7l1tV5kwquTa8lffG/H33c78f2zUwYKNxED4W53HvBvs/j1AKtQfqRdh3Tr48xIaPNhdqMEmn70SaFfQR4R0o2Eg1WgSuoNcKiBbKEKME0Nh5y3Jub/s8NX+sRNDUmcQh/osc0s9MOlTz4QNt0E8Ruy1mju7uyM2qP1rYIXwBLaWQ== olivertearne@MAC001
+EOF
+   docker run \
+       -dt \
+        --network="host" \
+        -e CLUSTER_NAME=scovmodfit \
+        -e JAVA_OPTS='-Xmx13500m -Xms12000m' \
+        -e SEED1=10.2.5.20 \
+        -e SEED2=10.2.5.40 \
+        -v /home/ubuntu/scovmodFittingOutput/:/output \
+        scovmod:0.0.231 \
+        runFitting.sh

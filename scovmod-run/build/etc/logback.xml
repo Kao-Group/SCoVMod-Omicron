@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+	<appender name="STD_OUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%date{dd MMM yyyy;HH:mm:ss:SSS} %-5level %logger{0} [%thread] %X{sourceThread} %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="SAMPLER_FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>/output/log/sampler.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/output/log/sampler_%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%date{dd MMM yyyy;HH:mm:ss:SSS} %-5level %logger{0} %X{akkaSource} [%thread] %X{sourceThread} %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="SCOVMOD_RUN_FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>/output/log/SCoVMod-run.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/output/log/SCoVMod-run_%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%date{dd MMM yyyy;HH:mm:ss:SSS} %-5level %logger{0} [%thread] %X{sourceThread} %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="SCOVMOD_MODEL_FILE"
+			  class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>/output/log/scovmod-model.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/output/log/scovmod-model_%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+					class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%date{dd MMM yyyy;HH:mm:ss:SSS} %-5level %logger{0} [%thread] %X{sourceThread} %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="FRAMEWORKS_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>/output/log/frameworks.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/output/log/frameworks_%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%date{dd MMM yyyy;HH:mm:ss:SSS} %-5level %logger{0} %X{akkaSource} %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="sampler" level="INFO" additivity="false">
+		<appender-ref ref="SAMPLER_FILE" />
+		<appender-ref ref="STD_OUT" />
+	</logger>
+
+	<logger name="scovmod.run" level="INFO" additivity="false">
+		<appender-ref ref="SCOVMOD_RUN_FILE" />
+		<appender-ref ref="STD_OUT" />
+	</logger>
+
+	<logger name="scovmod.model" level="INFO" additivity="false">
+		<appender-ref ref="SCOVMOD_MODEL_FILE" />
+		<appender-ref ref="STD_OUT" />
+	</logger>
+
+	<root level="INFO">
+		<appender-ref ref="FRAMEWORKS_FILE" />
+		<appender-ref ref="STD_OUT" />
+	</root>
+</configuration>
